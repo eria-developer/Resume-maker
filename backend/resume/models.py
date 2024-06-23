@@ -11,7 +11,6 @@ class Profile(models.Model):
     website = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
     github = models.URLField(blank=True, null=True)
-    # Add any other relevant fields
 
     def __str__(self):
         return f"{self.first_name} {self.othernames}"

@@ -1,13 +1,20 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 const NavBar = () => {
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "md:p-4 font-semibold px-0 block bg-purple-500 hover:bg-purple-400 rounded-2xl"
+      : "md:p-4 font-semibold px-0 block  rounded-2xl hover:bg-purple-400";
+
+  console.log(linkClass);
   return (
     <>
       <header className="lg:px-16 rounded text-white bg-purple-600 flex flex-wrap items-center py-2 px-4 shadow-md">
         <div className="flex-1 flex justify-between items-center">
-          <a href="#" className="text-xl font-bold">
+          <Link href="#" className="text-xl font-bold">
             ResumeGenius
-          </a>
+          </Link>
         </div>
 
         <label htmlFor="menu-toggle" className="pointer-cursor md:hidden block">
@@ -30,29 +37,20 @@ const NavBar = () => {
         >
           <nav>
             <ul className="md:flex items-center justify-between text-base text-white  md:pt-0">
-              <li>
-                <a
-                  className="md:p-4 font-semibold py- px-0 block hover:bg-purple-400 rounded-2xl"
-                  href="#"
-                >
+              <li className="mr-2">
+                <NavLink className={linkClass} to="/">
                   Home
-                </a>
+                </NavLink>
               </li>
-              <li>
-                <a
-                  className="md:p-4 font-semibold px-0 block hover:bg-purple-400 rounded-2xl"
-                  href="#"
-                >
+              <li className="mr-2">
+                <NavLink className={linkClass} to="resume-editor">
                   Resume Editor
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a
-                  className="md:p-4 font-semibold px-0 block hover:bg-purple-400 rounded-2xl"
-                  href="#"
-                >
+                <NavLink className={linkClass} to="export-resume">
                   Export
-                </a>
+                </NavLink>
               </li>
             </ul>
           </nav>
