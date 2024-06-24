@@ -1,40 +1,32 @@
 import React from "react";
 
-const EducationalBackground = () => {
+const Projects = () => {
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-4">Educational Background</h2>
+      <h2 className="text-2xl font-semibold mb-4">Projects Worked On</h2>
 
       <form>
         <div className="mb-4">
-          <label className="block text-gray-700">Profile</label>
+          <label className="block text-gray-700">Title</label>
           <input
             type="text"
-            name="profile"
+            name="title"
             className="w-full px-3 py-2 border rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Institution</label>
+          <label className="block text-gray-700">Description</label>
           <input
             type="text"
-            name="institution"
+            name="description"
             className="w-full px-3 py-2 border rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Degree</label>
+          <label className="block text-gray-700">Link</label>
           <input
             type="text"
-            name="degree"
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Field of Study</label>
-          <input
-            type="text"
-            name="field_of_study"
+            name="link"
             className="w-full px-3 py-2 border rounded"
           />
         </div>
@@ -54,22 +46,6 @@ const EducationalBackground = () => {
             className="w-full px-3 py-2 border rounded"
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Grade</label>
-          <input
-            type="text"
-            name="grade"
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Description</label>
-          <input
-            type="text"
-            name="description"
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
 
         <button
           type="submit"
@@ -82,4 +58,4 @@ const EducationalBackground = () => {
   );
 };
 
-export default EducationalBackground;
+export default Projects;
