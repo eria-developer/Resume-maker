@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ImageAndLink = ({ linkLabel, linkTarget, imageSrc, imageAlt }) => {
+const LinkComp = ({ linkLabel, linkTarget }) => {
   return (
     <>
       <div>
-        <img src={imageSrc} alt={imageAlt} className="rounded" />
         <div className="flex justify-center px-4 mt-4 bg-purple-500 rounded text-white font-semibold py-2">
           <Link to={linkTarget}>{linkLabel}</Link>
         </div>
@@ -14,4 +13,4 @@ const ImageAndLink = ({ linkLabel, linkTarget, imageSrc, imageAlt }) => {
   );
 };
 
-export default ImageAndLink;
+export default LinkComp;

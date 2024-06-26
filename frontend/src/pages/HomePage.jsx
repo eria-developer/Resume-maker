@@ -7,7 +7,7 @@ const HomePage = () => {
     <>
       <div className="flex justify-center items-center  pt-2">
         <div className=" font-bold mt-28 rounded-md mx-auto my-auto text-2xl">
-          Welcome to ResumeGenius
+          Welcome to ResumeWonder
         </div>
       </div>
       <div className="flex justify-center items-center pb-4 font-medium">

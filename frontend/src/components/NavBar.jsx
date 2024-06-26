@@ -13,7 +13,7 @@ const NavBar = () => {
       <header className="lg:px-16 rounded text-white bg-purple-600 flex flex-wrap items-center py-2 px-4 shadow-md">
         <div className="flex-1 flex justify-between items-center">
           <Link href="#" className="text-xl font-bold">
-            ResumeGenius
+            ResumeWonder
           </Link>
         </div>
 
