@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from . import models
 from rest_framework.response import Response
+from django.contrib.auth import get_user_model
 
 
 def create_standard_response(status, message, data=None):
@@ -11,6 +12,23 @@ def create_standard_response(status, message, data=None):
     if data is not None:
         response['data'] = data
     return Response(response)
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'username', 'email', 'password')
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
+    def create(self, validated_data):
+        user = get_user_model().objects.create_user(
+            email=validated_data['email'],
+            username=validated_data['username'],
+            password=validated_data['password']
+        )
+        return user
 
 
 class ProfileSerializer(serializers.ModelSerializer):
