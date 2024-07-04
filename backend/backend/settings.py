@@ -162,4 +162,4 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-# AUTH_USER_MODEL = "authentication.CustomUser"
+AUTH_USER_MODEL = "authentication.CustomUser"

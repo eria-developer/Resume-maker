@@ -1,6 +1,15 @@
 from django.db import models
+from authentication.models import  CustomUser
+
+
+class Resume(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="resumes")
+    title = models.CharField(max_length=254)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
 class Profile(models.Model):
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="profiles")
     first_name = models.CharField(max_length=50, null=False, blank=False)
     othernames = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(null=True, blank=True)
@@ -16,7 +25,7 @@ class Profile(models.Model):
 
 
 class Education(models.Model):
-    profile = models.ForeignKey(Profile, related_name='educations', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="education")
     institution = models.CharField(max_length=255)
     degree = models.CharField(max_length=255)
     field_of_study = models.CharField(max_length=255)
@@ -30,7 +39,7 @@ class Education(models.Model):
 
 
 class Experience(models.Model):
-    profile = models.ForeignKey(Profile, related_name='experiences', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="experience")
     job_title = models.CharField(max_length=255)
     company = models.CharField(max_length=255)
     location = models.CharField(max_length=255, blank=True, null=True)
@@ -50,7 +59,7 @@ class Skill(models.Model):
         ("professional", "Professional Level"),
     )
 
-    profile = models.ForeignKey(Profile, related_name='skills', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="skills")
     name = models.CharField(max_length=255)
     proficiency_level = models.CharField(max_length=50, blank=True, null=True, choices=PROFICIENCY_LEVEL_CHOICES)
 
@@ -59,7 +68,7 @@ class Skill(models.Model):
 
 
 class Leadership(models.Model):
-    profile = models.ForeignKey(Profile, related_name='leaderships', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="leadership")
     role = models.CharField(max_length=255)
     organization = models.CharField(max_length=255)
     start_date = models.DateField()
@@ -71,7 +80,7 @@ class Leadership(models.Model):
 
 
 class Reference(models.Model):
-    profile = models.ForeignKey(Profile, related_name='references', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="references")
     name = models.CharField(max_length=255)
     relationship = models.CharField(max_length=255)
     company = models.CharField(max_length=255, blank=True, null=True)
@@ -83,7 +92,7 @@ class Reference(models.Model):
 
 
 class Certification(models.Model):
-    profile = models.ForeignKey(Profile, related_name='certifications', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="certifications")
     name = models.CharField(max_length=255)
     authority = models.CharField(max_length=255)
     license_number = models.CharField(max_length=50, blank=True, null=True)
@@ -95,7 +104,7 @@ class Certification(models.Model):
 
 
 class Project(models.Model):
-    profile = models.ForeignKey(Profile, related_name='projects', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="projects")
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     link = models.URLField(blank=True, null=True)
@@ -114,7 +123,7 @@ class Language(models.Model):
         ("fluent", "Fluent Level"),
     )
 
-    profile = models.ForeignKey(Profile, related_name='languages', on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, on_delete=models.CASCADE, null=True, related_name="languages")
     name = models.CharField(max_length=255)
     proficiency_level = models.CharField(max_length=50, blank=True, null=True)
 
