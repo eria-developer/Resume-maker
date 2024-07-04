@@ -17,11 +17,9 @@ environ.Env.read_env()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*#5t7169fm8=2es-u5@mzh$m@5o5*h#)3($w(03^q&8uqb!7vw'
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = []
@@ -162,3 +160,6 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:5173"
 ]
+
+
+# AUTH_USER_MODEL = "authentication.CustomUser"
