@@ -4,14 +4,6 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 
 
-def create_standard_response(status, message, data=None):
-    response = {
-        'status': status,
-        'message': message,
-    }
-    if data is not None:
-        response['data'] = data
-    return Response(response)
 
 
 class UserSerializer(serializers.ModelSerializer):
